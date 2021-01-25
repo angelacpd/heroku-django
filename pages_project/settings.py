@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 
+import django_heroku
+
 # Environment variables
 from dotenv import load_dotenv
 load_dotenv()
@@ -30,7 +32,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -126,3 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
