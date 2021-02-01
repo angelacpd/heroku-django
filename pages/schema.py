@@ -33,7 +33,10 @@ class CreateItemMutation(graphene.Mutation):
 
     @classmethod
     def mutate(cls, root, info, input):
-        ip = info.context.META.get('REMOTE_ADDR')
+        remote_host = info.context.META.get('REMOTE_HOST')
+        remote_addr = info.context.META.get('REMOTE_ADDR')
+        x_forwarded_for = info.context.META.get('HTTP_X_FORWARDED_FOR')
+        ip = f"HOST: {remote_host}, ADDR: {remote_addr}, x_forwarded_for: {x_forwarded_for}"
         item = input.pop('item_text')
 
         return cls(success=True, ip=ip, item=item)
