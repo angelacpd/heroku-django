@@ -135,6 +135,7 @@ STATIC_URL = '/static/'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# Add graphene - GraphQL
 GRAPHENE = {
     'SCHEMA': 'pages_project.schema.schema'
 }
