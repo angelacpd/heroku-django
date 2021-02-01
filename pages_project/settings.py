@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third parties
+    'graphene_django',
     # Own
     'pages',
 ]
@@ -132,3 +134,7 @@ STATIC_URL = '/static/'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+GRAPHENE = {
+    'SCHEMA': 'pages_project.schema.schema'
+}
